@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <style media="screen">
+
+    </style>
+    <nav class="navbar navbar-inverse ">
+      <div class="conatiner">
+        <ul class='nav navbar-nav'>
+          <a href="{% url 'index' %}" class="navbar-brand">Home</a>
+          <a class="navbar-brand" href="{%url 'basic_app:register' %}">Register</a>
+          <a  class="navbar-brand" href="{%url 'admin:index'%}">Admin</a
+
+            <!-- note: reative urls find views not files. It goes to the urls.py files and finds the views related to the app name. -->
+
+            {%if user.is_authenticated %}
+
+                 <ul class='nav navbar-nav navbar-right'>
+                    <li><a class='navbar-brand 'href="{%url 'logout' %}">Logout</a></li>
+                 </ul>
+
+            {% else %}
+                    <a class="navbar-brand nav navbar-nav navbar-right" href="{%url 'basic_app:user_login' %}">login</a>
+
+            {% endif %}
+
+        </ul>
+
+
+      </div>
+    </nav>
+<div class="container">
+  {%block body_block%}
+  {%endblock%}
+</div>
+
+
+  </body>
+</html>
